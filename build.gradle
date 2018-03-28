@@ -1,0 +1,17 @@
+plugins {
+    id "io.spring.dependency-management" version "1.0.4.RELEASE"
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+dependencyManagement {
+
+    imports {
+        mavenBom "com.jh.queueues:bom-imported:${version}"
+    }
+}
+
+
+subprojects {
+    apply plugin: 'java'
+}

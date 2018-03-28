@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.jh.queueues</groupId>
+    <artifactId>bom</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <relativePath>../</relativePath>
+  </parent>
+  <groupId>com.jh.queues</groupId>
+  <artifactId>bom-exported</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>Queues! Exported Bill-Of-Materials</name>
+  <url>http://www.sunshower.io</url>
+  <properties>
+    <env.version>1.0.0-SNAPSHOT</env.version>
+    <sunshower-base.version>1.0.0-SNAPSHOT</sunshower-base.version>
+  </properties>
+
+
+  <dependencyManagement>
+  </dependencyManagement>
+</project>
