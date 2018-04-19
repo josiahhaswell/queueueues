@@ -16,43 +16,37 @@ import org.springframework.context.annotation.*;
 @Configuration
 public class SqsConfiguration {
 
+  @Bean
+  public MessageReceiver messageReceiver() {
+    return new MessageReceiver();
+  }
 
-    @Bean
-    public MessageReceiver messageReceiver() {
-        return new MessageReceiver();
-    }
+  @Bean
+  public AWSCredentialsProvider awsCredentialsProvider() {
+    return new AWSStaticCredentialsProvider(
+        new BasicAWSCredentials(
+            "AKIAIDDMH7JB5YCYRUBQ", "yYS7NKoa8nBRDzoTjDzKimn0bOf6vAA4mUhymeg1"));
+  }
 
-    @Bean
-    public AWSCredentialsProvider awsCredentialsProvider() {
-        return new AWSStaticCredentialsProvider(new BasicAWSCredentials(
-                "AKIAIDDMH7JB5YCYRUBQ",
-                "yYS7NKoa8nBRDzoTjDzKimn0bOf6vAA4mUhymeg1"
-        ));
-    }
+  @Bean
+  public RegionProvider regionProvider() {
+    return () -> Region.getRegion(Regions.DEFAULT_REGION);
+  }
 
-    @Bean
-    public RegionProvider regionProvider() {
-        return () -> Region.getRegion(Regions.DEFAULT_REGION);
-    }
+  @Bean
+  public ResourceIdResolver resourceIdResolver(AmazonSQSAsync async) {
+    return logicalResourceId -> async.createQueue(logicalResourceId).getQueueUrl();
+  }
 
-    @Bean
-    public ResourceIdResolver resourceIdResolver(AmazonSQSAsync async) {
-        return logicalResourceId -> async.createQueue(logicalResourceId).getQueueUrl();
-    }
-
-
-    @Bean
-    @Primary
-    public AmazonSQSAsync amazonSQS() {
-        return AmazonSQSAsyncClient.asyncBuilder()
-                .withCredentials(
-                        new AWSStaticCredentialsProvider(
-                                new BasicAWSCredentials(
-                                        "AKIAIDDMH7JB5YCYRUBQ",
-                                        "yYS7NKoa8nBRDzoTjDzKimn0bOf6vAA4mUhymeg1"
-                                ))).withRegion(Regions.DEFAULT_REGION)
-
-                .build();
-    }
-
+  @Bean
+  @Primary
+  public AmazonSQSAsync amazonSQS() {
+    return AmazonSQSAsyncClient.asyncBuilder()
+        .withCredentials(
+            new AWSStaticCredentialsProvider(
+                new BasicAWSCredentials(
+                    "AKIAIDDMH7JB5YCYRUBQ", "yYS7NKoa8nBRDzoTjDzKimn0bOf6vAA4mUhymeg1")))
+        .withRegion(Regions.DEFAULT_REGION)
+        .build();
+  }
 }

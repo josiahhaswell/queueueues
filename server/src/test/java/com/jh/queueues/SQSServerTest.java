@@ -1,6 +1,5 @@
 package com.jh.queueues;
 
-import com.amazonaws.services.sqs.AmazonSQSAsync;
 import com.jh.queueueues.api.ThingOne;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
