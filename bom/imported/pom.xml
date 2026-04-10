@@ -20,7 +20,7 @@
         <env.version>1.0.0-SNAPSHOT</env.version>
         <sqs-sdk.version>1.11.303</sqs-sdk.version>
         <junit-jupiter.version>5.1.0</junit-jupiter.version>
-        <apache-active-mq.version>5.15.0</apache-active-mq.version>
+        <apache-active-mq.version>5.19.4</apache-active-mq.version>
     </properties>
 
     <dependencies>
